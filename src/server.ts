@@ -1,8 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+require('dotenv').config();
 
-const genAI = new GoogleGenerativeAI("AIzaSyAbveDCZMugo_upt0eQNo1QfyaMC5MOjRw");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const port = process.env.PORT || 3000;
 const app = express();
